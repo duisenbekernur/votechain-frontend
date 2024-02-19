@@ -5,12 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4548eb06-126d-4d95-8e04-ae177aa7552f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/composables/web3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/VoteResults.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Votes.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/BaseHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/BaseHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/BaseSide.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/BaseSide.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,6 +67,8 @@
       <updated>1706863115183</updated>
       <workItem from="1706863121623" duration="2529000" />
       <workItem from="1707119799673" duration="604000" />
+      <workItem from="1708275994128" duration="940000" />
+      <workItem from="1708329384056" duration="2481000" />
     </task>
     <servers />
   </component>
