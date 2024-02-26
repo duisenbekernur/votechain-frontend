@@ -31,8 +31,7 @@
   </div>
 </template>
 
-<script>
-import web3 from "~/composables/web3"; // Adjust the import path based on your project structure
+<script>// Adjust the import path based on your project structure
 import abi from "/public/contracts/MyToken.sol/Ballot.json";
 import { ethers } from "ethers";
 

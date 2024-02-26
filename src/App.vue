@@ -1,5 +1,4 @@
 <script>
-import web3 from "~/composables/web3";
 import abi from "/public/contracts/MyToken.sol/Ballot.json";
 import { ethers } from "ethers";
 
