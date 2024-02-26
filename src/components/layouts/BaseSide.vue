@@ -27,11 +27,19 @@
     <!--      </el-sub-menu>-->
     <!--    </el-sub-menu>-->
     <el-menu-item index="1">
-      <el-icon><Document /></el-icon>
+      <router-link :to="{ name: 'vote' }">
+        <el-icon>
+          <Document />
+        </el-icon>
+      </router-link>
       <template #title>Vote</template>
     </el-menu-item>
     <el-menu-item index="2">
-      <el-icon><Tickets /></el-icon>
+      <router-link :to="{ name: 'results' }">
+        <el-icon>
+          <Tickets />
+        </el-icon>
+      </router-link>
       <template #title>Results</template>
     </el-menu-item>
     <!--    <el-menu-item index="3" disabled>-->
@@ -46,11 +54,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { Document, Tickets } from "@element-plus/icons-vue";
+import { useRouter } from "vue-router";
 
 const isCollapse = ref(true);
 const active = ref("1");
+const router = useRouter();
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
 };
@@ -60,4 +70,18 @@ const handleClose = (key: string, keyPath: string[]) => {
 const handleChange = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
 };
+
+watch(
+  () => active.value,
+  () => {
+    switch (active.value) {
+      case "1":
+        router.push({ name: "results" });
+        break;
+      case "2":
+        router.push({ name: "vote" });
+        break;
+    }
+  }
+);
 </script>

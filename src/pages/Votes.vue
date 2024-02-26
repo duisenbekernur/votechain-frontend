@@ -1,10 +1,14 @@
 <template>
   <div>
+    <img
+      style="width: 400px; margin: 0 auto"
+      src="https://media.istockphoto.com/id/1279873006/vector/rubber-stamp-with-text-vote-make-your-voice-heard-vector-textured-grunge-illustration-with.jpg?s=612x612&w=0&k=20&c=8cJtFB6UhkVp6zdKSS_GieR1GLyqy9nFB8JoshWa0BQ="
+    />
     <el-form :model="form" :rules="rules" ref="voteForm" label-width="120px">
-      <el-form-item label="Username" prop="username">
+      <el-form-item label="ID" prop="username">
         <el-input
           v-model="form.username"
-          placeholder="Enter your username"
+          placeholder="Enter your Passport ID"
         ></el-input>
       </el-form-item>
 
@@ -28,10 +32,18 @@
 </template>
 
 <script>
-import web3 from "~/composables/web3";
+import web3 from "~/composables/web3"; // Adjust the import path based on your project structure
+import abi from "/public/contracts/MyToken.sol/Ballot.json";
+import { ethers } from "ethers";
 
 export default {
   name: "Votes",
+  props: {
+    accounts: Array,
+    contract: Object,
+    provider: Object,
+    browserProvider: Object,
+  },
   data() {
     return {
       form: {
@@ -42,7 +54,7 @@ export default {
         username: [
           {
             required: true,
-            message: "Please enter your username",
+            message: "Please enter your ID",
             trigger: "blur",
           },
         ],
@@ -71,25 +83,34 @@ export default {
   methods: {
     async submitForm() {
       try {
-        const accounts = await web3.eth.getAccounts();
+        const contractAddress = "0x8d7934279e6cD5aD5E47d04814493B6445886b82";
+        const contractABI = abi.abi;
+        let provider = null;
+        if (window.ethereum) {
+          provider = new ethers.BrowserProvider(window.ethereum);
+        } else {
+          console.error("MetaMask is not installed.");
+        }
 
-        // Your smart contract ABI and address
-        const contractAddress = "0xYourContractAddress";
-        const contractABI = "YourContractABI";
+        const signer = provider ? await provider.getSigner() : null;
 
-        const contract = new web3.eth.Contract(contractABI, contractAddress);
+        console.log(signer);
 
-        // Example: Calling a vote function on your smart contract
-        await contract.methods.vote(this.form.vote).send({
-          from: accounts[0],
-        });
+        const contract = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          provider
+        );
+        const contractWithSigner = await contract.connect(signer);
+        console.log("contract: ", contractWithSigner);
+        const tx = await contractWithSigner.vote(0, "123");
 
-        // You can handle success, show a message, or trigger other events
-        this.$message.success("Vote submitted successfully!");
+        let data = localStorage.getItem("VoteResults");
+
+        alert("Vote submitted successfully!");
       } catch (error) {
-        // Handle errors, display a message, or log to the console
         console.error("Error submitting vote:", error);
-        this.$message.error("Error submitting vote. Please try again.");
+        alert("Error submitting vote. Please try again.");
       }
     },
   },
