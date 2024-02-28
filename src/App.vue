@@ -42,7 +42,7 @@ export default {
       name: item[1],
       voteCount: item[2],
     }));
-    console.log(tx[1]);
+    console.log("actions", tx);
     this.actions = tx[1].map((item) => ({
       passportID: item[0],
       candidateID: item[1],
